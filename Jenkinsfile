@@ -38,6 +38,8 @@ spec:
           steps {
               container('kubectl') {
                   sh '''
+                    kubectl  --token=$TOKEN create rolebinding elk --clusterrole=admin --serviceaccount=jenkins:default --namespace=elk
+                    kubectl  --token=$TOKEN create clusterrolebinding elk --clusterrole cluster-admin --serviceaccount=jenkins:jenkins -n elk
                     . elk.sh  
                     kubectl --token=$TOKEN -n elk get all
                      
