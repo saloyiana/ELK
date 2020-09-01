@@ -38,7 +38,6 @@ spec:
           steps {
               container('kubectl') {
                   sh '''
-                    cd elk/
                     . elk.sh  
                     kubectl --token=$TOKEN -n elk get all
                      
